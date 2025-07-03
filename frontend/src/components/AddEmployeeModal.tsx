@@ -2,9 +2,16 @@ import React, { useState } from 'react';
 import {
   Modal, ModalOverlay, ModalContent, ModalHeader, ModalCloseButton,
   ModalBody, ModalFooter, Button, Input, FormControl, FormLabel,
-  useToast, VStack
+  useToast, VStack, InputGroup, InputLeftElement
 } from '@chakra-ui/react';
 import { gql, useMutation } from '@apollo/client';
+import {
+  AtSignIcon,
+  CalendarIcon,
+  StarIcon,
+  SmallAddIcon,
+  EditIcon
+} from '@chakra-ui/icons';
 
 const ADD_EMPLOYEE = gql`
   mutation AddEmployee($name: String!, $age: Int!, $class: String, $subjects: [String!], $attendance: Float) {
@@ -66,28 +73,60 @@ const AddEmployeeModal: React.FC<Props> = ({ isOpen, onClose, refetch }) => {
           <VStack spacing={3}>
             <FormControl isRequired>
               <FormLabel>Name</FormLabel>
-              <Input name="name" onChange={handleChange} />
+              <InputGroup>
+                <InputLeftElement pointerEvents="none">
+                  <EditIcon color="gray.400" />
+                </InputLeftElement>
+                <Input name="name" onChange={handleChange} />
+              </InputGroup>
             </FormControl>
             <FormControl isRequired>
               <FormLabel>Age</FormLabel>
-              <Input name="age" type="number" onChange={handleChange} />
+              <InputGroup>
+                <InputLeftElement pointerEvents="none">
+                  <CalendarIcon color="gray.400" />
+                </InputLeftElement>
+                <Input name="age" type="number" onChange={handleChange} />
+              </InputGroup>
             </FormControl>
             <FormControl>
               <FormLabel>Class</FormLabel>
-              <Input name="class" onChange={handleChange} />
+              <InputGroup>
+                <InputLeftElement pointerEvents="none">
+                  <StarIcon color="gray.400" />
+                </InputLeftElement>
+                <Input name="class" onChange={handleChange} />
+              </InputGroup>
             </FormControl>
             <FormControl>
               <FormLabel>Subjects (comma separated)</FormLabel>
-              <Input name="subjects" onChange={handleChange} />
+              <InputGroup>
+                <InputLeftElement pointerEvents="none">
+                  <AtSignIcon color="gray.400" />
+                </InputLeftElement>
+                <Input name="subjects" onChange={handleChange} />
+              </InputGroup>
             </FormControl>
             <FormControl>
               <FormLabel>Attendance (%)</FormLabel>
-              <Input name="attendance" type="number" onChange={handleChange} />
+              <InputGroup>
+                <InputLeftElement pointerEvents="none">
+                  <SmallAddIcon color="gray.400" />
+                </InputLeftElement>
+                <Input name="attendance" type="number" onChange={handleChange} />
+              </InputGroup>
             </FormControl>
           </VStack>
         </ModalBody>
         <ModalFooter>
-          <Button onClick={handleSubmit} isLoading={loading} colorScheme="teal">Save</Button>
+          <Button
+            onClick={handleSubmit}
+            isLoading={loading}
+            colorScheme="teal"
+            leftIcon={<SmallAddIcon />}
+          >
+            Save
+          </Button>
         </ModalFooter>
       </ModalContent>
     </Modal>

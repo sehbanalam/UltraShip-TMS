@@ -8,8 +8,13 @@ function App() {
 
   return (
     <Routes>
+    
+      <Route path="/" element={<Navigate to={token ? "/dashboard" : "/login"} replace />} />
+
       <Route path="/login" element={<Login />} />
       <Route path="/dashboard" element={token ? <Dashboard /> : <Navigate to="/login" />} />
+
+     
       <Route path="*" element={<Navigate to={token ? "/dashboard" : "/login"} />} />
     </Routes>
   );

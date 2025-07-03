@@ -12,9 +12,18 @@ import {
   FormControl,
   FormLabel,
   VStack,
-  useToast
+  useToast,
+  InputGroup,
+  InputLeftElement
 } from '@chakra-ui/react';
 import { gql, useMutation } from '@apollo/client';
+import {
+  AtSignIcon,
+  CalendarIcon,
+  StarIcon,
+  SmallAddIcon,
+  EditIcon
+} from '@chakra-ui/icons';
 
 const UPDATE_EMPLOYEE = gql`
   mutation UpdateEmployee(
@@ -111,28 +120,58 @@ const EditEmployeeModal: React.FC<Props> = ({ isOpen, onClose, employee, refetch
           <VStack spacing={3}>
             <FormControl isRequired>
               <FormLabel>Name</FormLabel>
-              <Input name="name" value={form.name} onChange={handleChange} />
+              <InputGroup>
+                <InputLeftElement pointerEvents="none">
+                  <EditIcon color="gray.400" />
+                </InputLeftElement>
+                <Input name="name" value={form.name} onChange={handleChange} />
+              </InputGroup>
             </FormControl>
             <FormControl isRequired>
               <FormLabel>Age</FormLabel>
-              <Input name="age" type="number" value={form.age} onChange={handleChange} />
+              <InputGroup>
+                <InputLeftElement pointerEvents="none">
+                  <CalendarIcon color="gray.400" />
+                </InputLeftElement>
+                <Input name="age" type="number" value={form.age} onChange={handleChange} />
+              </InputGroup>
             </FormControl>
             <FormControl>
               <FormLabel>Class</FormLabel>
-              <Input name="class" value={form.class} onChange={handleChange} />
+              <InputGroup>
+                <InputLeftElement pointerEvents="none">
+                  <StarIcon color="gray.400" />
+                </InputLeftElement>
+                <Input name="class" value={form.class} onChange={handleChange} />
+              </InputGroup>
             </FormControl>
             <FormControl>
               <FormLabel>Subjects</FormLabel>
-              <Input name="subjects" value={form.subjects} onChange={handleChange} />
+              <InputGroup>
+                <InputLeftElement pointerEvents="none">
+                  <AtSignIcon color="gray.400" />
+                </InputLeftElement>
+                <Input name="subjects" value={form.subjects} onChange={handleChange} />
+              </InputGroup>
             </FormControl>
             <FormControl>
               <FormLabel>Attendance (%)</FormLabel>
-              <Input name="attendance" type="number" value={form.attendance} onChange={handleChange} />
+              <InputGroup>
+                <InputLeftElement pointerEvents="none">
+                  <SmallAddIcon color="gray.400" />
+                </InputLeftElement>
+                <Input name="attendance" type="number" value={form.attendance} onChange={handleChange} />
+              </InputGroup>
             </FormControl>
           </VStack>
         </ModalBody>
         <ModalFooter>
-          <Button onClick={handleSubmit} isLoading={loading} colorScheme="teal">
+          <Button
+            onClick={handleSubmit}
+            isLoading={loading}
+            colorScheme="teal"
+            leftIcon={<EditIcon />} // Add icon to Save Changes button
+          >
             Save Changes
           </Button>
         </ModalFooter>

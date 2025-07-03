@@ -13,6 +13,7 @@ import EmployeeTile from '../components/EmployeeTile';
 import EmployeeGridItem from '../components/EmployeeGridItem';
 import AddEmployeeModal from '../components/AddEmployeeModal';
 import { useDisclosure } from '@chakra-ui/react';
+import Navbar from '../components/Navbar';
 
 const GET_EMPLOYEES = gql`
   query GetEmployees {
@@ -34,7 +35,6 @@ const Dashboard: React.FC = () => {
   const toast = useToast();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
-  // Dynamically adjust number of columns based on screen and view type
   const columnCount = useBreakpointValue({
     base: 1,
     sm: 2,
@@ -53,41 +53,55 @@ const Dashboard: React.FC = () => {
   }
 
   return (
-    <Box p={4}>
-      <Flex
-        justify="space-between"
-        align={{ base: 'flex-start', md: 'center' }}
-        direction={{ base: 'column', md: 'row' }}
-        gap={4}
-        mb={4}
-      >
-        <Heading size="md">Employees</Heading>
-        <Flex gap={2} wrap="wrap">
-          <Button onClick={() => setView(view === 'grid' ? 'tile' : 'grid')}>
-            Switch to {view === 'grid' ? 'Tile' : 'Grid'} View
-          </Button>
-          {role === 'admin' && (
-            <Button colorScheme="teal" onClick={onOpen}>
-              + Add Employee
+    <>
+      <Navbar />
+
+      <Box p={4}>
+        <Flex
+          justify="space-between"
+          align={{ base: 'flex-start', md: 'center' }}
+          direction={{ base: 'column', md: 'row' }}
+          gap={4}
+          mb={4}
+        >
+          <Heading size="md">Employees</Heading>
+          <Flex gap={2} wrap="wrap">
+            <Button onClick={() => setView(view === 'grid' ? 'tile' : 'grid')}>
+              Switch to {view === 'grid' ? 'Tile' : 'Grid'} View
             </Button>
-          )}
+            {role === 'admin' && (
+              <Button colorScheme="teal" onClick={onOpen}>
+                + Add Employee
+              </Button>
+            )}
+          </Flex>
         </Flex>
-      </Flex>
 
-      <SimpleGrid columns={columnCount} spacing={4}>
-        {data?.employees.map((emp: any) =>
-          view === 'grid' ? (
-            <EmployeeGridItem key={emp.id} employee={emp} role={role} />
-          ) : (
-            <EmployeeTile key={emp.id} employee={emp} role={role} />
-          )
+        <SimpleGrid columns={columnCount} spacing={4}>
+          {data?.employees.map((emp: any) =>
+            view === 'grid' ? (
+              <EmployeeGridItem
+                key={emp.id}
+                employee={emp}
+                role={role}
+                refetch={refetch}
+              />
+            ) : (
+              <EmployeeTile
+                key={emp.id}
+                employee={emp}
+                role={role}
+                refetch={refetch}
+              />
+            )
+          )}
+        </SimpleGrid>
+
+        {role === 'admin' && (
+          <AddEmployeeModal isOpen={isOpen} onClose={onClose} refetch={refetch} />
         )}
-      </SimpleGrid>
-
-      {role === 'admin' && (
-        <AddEmployeeModal isOpen={isOpen} onClose={onClose} refetch={refetch} />
-      )}
-    </Box>
+      </Box>
+    </>
   );
 };
 

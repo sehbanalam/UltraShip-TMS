@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Box,
   Text,
@@ -7,11 +7,24 @@ import {
   HStack,
   Badge,
   useDisclosure,
-  useToast
+  useToast,
+  useColorModeValue,
+  Icon
 } from '@chakra-ui/react';
+import {
+  InfoIcon,
+  AtSignIcon,
+  SmallAddIcon,
+  ViewIcon,
+  EditIcon,
+  DeleteIcon
+} from '@chakra-ui/icons';
 import { gql, useMutation } from '@apollo/client';
+import { motion } from 'framer-motion';
 import EmployeeDetail from './EmployeeDetail';
 import EditEmployeeModal from './EditEmployeeModal';
+
+const MotionBox = motion(Box);
 
 interface Props {
   employee: {
@@ -62,24 +75,68 @@ const EmployeeTile: React.FC<Props> = ({ employee, role, refetch }) => {
     }
   };
 
+  const bg = useColorModeValue('white', 'gray.700');
+  const textColor = useColorModeValue('gray.800', 'whiteAlpha.900');
+  const labelColor = useColorModeValue('gray.500', 'gray.300');
+
   return (
     <>
-      <Box p={4} borderWidth="1px" borderRadius="lg" boxShadow="sm" bg="gray.50">
+      <MotionBox
+        p={5}
+        bg={bg}
+        borderRadius="2xl"
+        boxShadow="md"
+        transition="all 0.2s"
+        _hover={{ boxShadow: 'lg' }}
+        whileHover={{ scale: 1.02, y: -2 }}
+      >
         <Stack spacing={2}>
-          <Text fontWeight="bold">{employee.name}</Text>
-          <Text>Class: {employee.class}</Text>
+          <HStack>
+            <Icon as={InfoIcon} color="teal.400" />
+            <Text fontWeight="bold" fontSize="lg" color={textColor}>
+              {employee.name}
+            </Text>
+          </HStack>
+
+          <HStack>
+            <Icon as={AtSignIcon} color="gray.400" />
+            <Text color={labelColor}>Class: {employee.class}</Text>
+          </HStack>
+
+          <HStack>
+            <Icon as={SmallAddIcon} color="gray.400" />
+            <Text color={labelColor}>Attendance: {employee.attendance}%</Text>
+          </HStack>
+
           <HStack wrap="wrap">
             {employee.subjects.map((s, i) => (
-              <Badge key={i} colorScheme="teal">{s}</Badge>
+              <Badge key={i} colorScheme="teal">
+                {s}
+              </Badge>
             ))}
           </HStack>
 
           <HStack justify="space-between" mt={2}>
-            <Button size="sm" onClick={openDetail}>Details</Button>
+            <Button
+              size="sm"
+              leftIcon={<ViewIcon />}
+              onClick={openDetail}
+              colorScheme="teal"
+              variant="outline"
+            >
+              Details
+            </Button>
 
             {role === 'admin' && (
               <HStack>
-                <Button size="sm" colorScheme="yellow" onClick={openEdit}>
+                <Button
+                  size="sm"
+                  colorScheme="yellow"
+                  onClick={openEdit}
+                  as={motion.button}
+                  whileTap={{ scale: 0.95 }}
+                  leftIcon={<EditIcon />}
+                >
                   Edit
                 </Button>
                 <Button
@@ -87,6 +144,9 @@ const EmployeeTile: React.FC<Props> = ({ employee, role, refetch }) => {
                   colorScheme="red"
                   onClick={handleDelete}
                   isLoading={deleting}
+                  as={motion.button}
+                  whileTap={{ scale: 0.95 }}
+                  leftIcon={<DeleteIcon />}
                 >
                   Delete
                 </Button>
@@ -94,7 +154,7 @@ const EmployeeTile: React.FC<Props> = ({ employee, role, refetch }) => {
             )}
           </HStack>
         </Stack>
-      </Box>
+      </MotionBox>
 
       <EmployeeDetail
         isOpen={isDetailOpen}
