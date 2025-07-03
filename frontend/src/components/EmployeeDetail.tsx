@@ -10,8 +10,7 @@ import {
   Button,
   Stack,
   Text,
-  Badge,
-  useToast
+  Badge
 } from '@chakra-ui/react';
 import { EditIcon, DeleteIcon, InfoOutlineIcon, AtSignIcon, CalendarIcon, StarIcon } from '@chakra-ui/icons';
 
@@ -39,7 +38,6 @@ const EmployeeDetail: React.FC<Props> = ({
   onEdit,
   onDelete
 }) => {
-  const toast = useToast();
 
   return (
     <Modal isOpen={isOpen} onClose={onClose} size="md" isCentered>

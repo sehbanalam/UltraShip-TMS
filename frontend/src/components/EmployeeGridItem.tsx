@@ -53,7 +53,7 @@ const EmployeeGridItem: React.FC<Props> = ({ employee, role, refetch }) => {
   const detailModal = useDisclosure();
   const editModal = useDisclosure();
 
-  const [deleteEmployee, { loading: deleting }] = useMutation(DELETE_EMPLOYEE);
+  const [deleteEmployee] = useMutation(DELETE_EMPLOYEE);
 
   const handleDelete = async () => {
     const confirm = window.confirm(`Delete employee "${employee.name}"?`);
