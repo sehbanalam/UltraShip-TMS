@@ -8,7 +8,7 @@ Built for performance, modularity, and beautiful UX, this app demonstrates scala
 
 ## 🔗 Live Demo & Code
 
-- 🌐 Frontend: [https://ultraship-frontend.vercel.app](https://ultraship-frontend.vercel.app)  
+- 🌐 Frontend: [https://ultraship-tms.vercel.app/](https://ultraship-tms.vercel.app/)  
 - 🔙 Backend: [https://ultraship-tms.onrender.com/graphql](https://ultraship-tms.onrender.com/graphql)  
 - 📦 GitHub Repo: [https://github.com/sehbanalam/UltraShip-TMS](https://github.com/sehbanalam/UltraShip-TMS)
 - 📬 Postman Collection: [UltraShip-TMS API (Postman)](https://sehbanalam-120993.postman.co/workspace/My-Workspace~25d6bf71-89b2-48f2-8829-21dc8216ed77/collection/46451924-6d4f9386-1b66-4207-a5ea-1cf0bba83055?action=share&source=copy-link&creator=46451924)
