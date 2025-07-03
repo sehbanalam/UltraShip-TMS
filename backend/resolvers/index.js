@@ -64,6 +64,15 @@ const resolvers = {
       }
       return await Employee.findByIdAndUpdate(id, rest, { new: true });
     },
+    deleteEmployee: async (_, { id }, { user }) => {
+  if (!user || user.role !== 'admin') {
+    throw new AuthenticationError('Only admin can delete employees');
+  }
+
+  const deleted = await Employee.findByIdAndDelete(id);
+  return !!deleted;
+},
+
   },
 };
 

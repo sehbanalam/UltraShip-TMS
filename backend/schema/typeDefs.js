@@ -30,6 +30,8 @@ const typeDefs = gql`
 
     addEmployee(name: String!, age: Int!, class: String, subjects: [String], attendance: Float): Employee
     updateEmployee(id: ID!, name: String, age: Int, class: String, subjects: [String], attendance: Float): Employee
+    deleteEmployee(id: ID!): Boolean
+
   }
 `;
 
