@@ -1,4 +1,4 @@
-# 🚀 UltraShip Employee Manager – Full Stack GraphQL App
+# UltraShip Employee Manager – Full Stack GraphQL App
 
 A modern, full stack employee management platform built with **React + Chakra UI (frontend)** and **Node.js + GraphQL + MongoDB (backend)**.
 
@@ -6,16 +6,16 @@ Built for performance, modularity, and beautiful UX, this app demonstrates scala
 
 ---
 
-## 🔗 Live Demo & Code
+## Live Demo & Code
 
-- 🌐 Frontend: [https://ultraship-tms.vercel.app/](https://ultraship-tms.vercel.app/)  
-- 🔙 Backend: [https://ultraship-tms.onrender.com/graphql](https://ultraship-tms.onrender.com/graphql)  
-- 📦 GitHub Repo: [https://github.com/sehbanalam/UltraShip-TMS](https://github.com/sehbanalam/UltraShip-TMS)
-- 📬 Postman Collection: [UltraShip-TMS API (Postman)](https://sehbanalam-120993.postman.co/workspace/My-Workspace~25d6bf71-89b2-48f2-8829-21dc8216ed77/collection/46451924-6d4f9386-1b66-4207-a5ea-1cf0bba83055?action=share&source=copy-link&creator=46451924)
+- Frontend: [https://ultraship-tms.vercel.app/](https://ultraship-tms.vercel.app/)  
+- Backend: [https://ultraship-tms.onrender.com/graphql](https://ultraship-tms.onrender.com/graphql)  
+- GitHub Repo: [https://github.com/sehbanalam/UltraShip-TMS](https://github.com/sehbanalam/UltraShip-TMS)
+- Postman Collection: [UltraShip-TMS API (Postman)](https://sehbanalam-120993.postman.co/workspace/My-Workspace~25d6bf71-89b2-48f2-8829-21dc8216ed77/collection/46451924-6d4f9386-1b66-4207-a5ea-1cf0bba83055?action=share&source=copy-link&creator=46451924)
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 **Frontend**
 - React (Vite)
@@ -34,25 +34,25 @@ Built for performance, modularity, and beautiful UX, this app demonstrates scala
 
 ---
 
-## 🎨 Features Overview
+## Features Overview
 
 | Feature | Description |
 |--------|-------------|
-| 🔐 Role-based login | Admin vs Employee routing & features |
-| 🧭 Navigation | Horizontal menu + Hamburger (draIr) menu |
-| 📊 Grid view | Employee records with icon-enhanced rows |
-| 🧱 Tile view | Compact cards with edit/delete/details |
-| 🔎 Details modal | Popup showing full record (with icons) |
-| ✏️ Edit modal | Pre-filled form with update mutation |
-| ➕ Add employee | Admin-only modal with validations |
-| 🧹 Delete employee | With confirmation and real-time UI refresh |
-| 📚 Pagination & sorting | Handled via GraphQL API |
-| 🌑 Dark mode | Full theme support with Chakra |
-| 🚀 Animations | Framer motion-poIred tile/card transitions |
+| Role-based login | Admin vs Employee routing & features |
+| Navigation | Horizontal menu + Hamburger (draIr) menu |
+| Grid view | Employee records with icon-enhanced rows |
+| Tile view | Compact cards with edit/delete/details |
+| Details modal | Popup showing full record (with icons) |
+| Edit modal | Pre-filled form with update mutation |
+| Add employee | Admin-only modal with validations |
+| Delete employee | With confirmation and real-time UI refresh |
+| Pagination & sorting | Handled via GraphQL API |
+| Dark mode | Full theme support with Chakra |
+| Animations | Framer motion-poIred tile/card transitions |
 
 ---
 
-## ✅ How to Run Locally
+## How to Run Locally
 
 ### 1. Clone the repo:
 
@@ -102,7 +102,7 @@ Visit: [http://localhost:5173](http://localhost:5173)
 
 ---
 
-## 🧪 Test User Credentials
+## Test User Credentials
 
 | Role   | Email              | Password  |
 |--------|--------------------|-----------|
@@ -113,36 +113,36 @@ Visit: [http://localhost:5173](http://localhost:5173)
 
 ---
 
-## ✅ Assignment Requirements Coverage
+## Assignment Requirements Coverage
 
-📄 From the provided assignment document:
+From the provided assignment document:
 
-### 🔹 Frontend Criteria
+### Frontend Criteria
 
-- ✅ Hamburger menu with 1-level submenu → Chakra DraIr
-- ✅ Horizontal menu → Chakra HStack with routing
-- ✅ Grid view (10-col layout) → Responsive, icon-labeled
-- ✅ Tile view (compact with buttons) → Framer motion + role-based controls
-- ✅ Details view → Modal with icons and structured data
-- ✅ Edit / Delete → Modals + GraphQL mutation
-- ✅ Role access → Admin can edit/delete/add; Employee has view-only
-- ✅ Beautiful UI → Chakra theming, dark mode, hover effects, spacing
+- Hamburger menu with 1-level submenu → Chakra DraIr
+- Horizontal menu → Chakra HStack with routing
+- Grid view (10-col layout) → Responsive, icon-labeled
+- Tile view (compact with buttons) → Framer motion + role-based controls
+- Details view → Modal with icons and structured data
+- Edit / Delete → Modals + GraphQL mutation
+- Role access → Admin can edit/delete/add; Employee has view-only
+- Beautiful UI → Chakra theming, dark mode, hover effects, spacing
 
-### 🔹 Backend Criteria
+### Backend Criteria
 
-- ✅ GraphQL API with:
+- GraphQL API with:
   - `getEmployees(page, limit, sortBy)`
   - `getEmployee(id)`
   - `addEmployee`, `updateEmployee`, `deleteEmployee`
-- ✅ MongoDB schema with: `id`, `name`, `age`, `class`, `subjects`, `attendance`
-- ✅ JWT Auth and role-based access (`admin`, `employee`)
-- ✅ Pagination & sorting supported
-- ✅ Performance: Indexed queries, minimal field fetching
-- ✅ Deployed on Render
+- MongoDB schema with: `id`, `name`, `age`, `class`, `subjects`, `attendance`
+- JWT Auth and role-based access (`admin`, `employee`)
+- Pagination & sorting supported
+- Performance: Indexed queries, minimal field fetching
+- Deployed on Render
 
 ---
 
-## 📦 Folder Structure
+## Folder Structure
 
 ```
 UltraShip-TMS/
@@ -163,13 +163,13 @@ UltraShip-TMS/
 
 ---
 
-## 🧠 What I’ve Done (Summary)
+## What I’ve Done (Summary)
 
-- 🔧 Designed GraphQL schema and resolvers
-- 🔐 Added JWT authentication and role-based logic
-- 🎨 Built a modern React dashboard using Chakra UI
-- 🧼 Implemented reusable modals for view/edit
-- ⚡ Added framer motion and dark mode support
-- 🧪 Connected everything via Apollo Client
-- 🚀 Deployed backend (Render) and frontend (Vercel)
-- 📋 Matched all assignment requirements (UI + functionality)
+- Designed GraphQL schema and resolvers
+- Added JWT authentication and role-based logic
+- Built a modern React dashboard using Chakra UI
+- Implemented reusable modals for view/edit
+- Added framer motion and dark mode support
+- Connected everything via Apollo Client
+- Deployed backend (Render) and frontend (Vercel)
+- Matched all assignment requirements (UI + functionality)
